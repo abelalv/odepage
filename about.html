@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ode - Introducción</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ode</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./about.html" aria-current="page">Introducción</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./campopen.html">Campo de pendientes</a>
+  </li>  
+  <li class="dropdown-header">
+ linal1.qmd</li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#unidad-1" id="toc-unidad-1" class="nav-link active" data-scroll-target="#unidad-1">Unidad 1</a>
+  <ul class="collapse">
+  <li><a href="#definiciones" id="toc-definiciones" class="nav-link" data-scroll-target="#definiciones">Definiciones</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#cuando-una-función-es-solución-de-una-ecuación-diferencial" id="toc-cuando-una-función-es-solución-de-una-ecuación-diferencial" class="nav-link" data-scroll-target="#cuando-una-función-es-solución-de-una-ecuación-diferencial">Cuando una función es solución de una ecuación diferencial</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-1" id="toc-ejercicios-1" class="nav-link" data-scroll-target="#ejercicios-1">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#primer-método-para-encontrar-las-soluciones-de-una-edo-de-primer-orden" id="toc-primer-método-para-encontrar-las-soluciones-de-una-edo-de-primer-orden" class="nav-link" data-scroll-target="#primer-método-para-encontrar-las-soluciones-de-una-edo-de-primer-orden">Primer método para encontrar las soluciones de una EDO de primer orden</a>
+  <ul class="collapse">
+  <li><a href="#ecuaciones-variables-separables" id="toc-ecuaciones-variables-separables" class="nav-link" data-scroll-target="#ecuaciones-variables-separables">Ecuaciones Variables separables</a></li>
+  <li><a href="#integrales-y-curvas-integrales" id="toc-integrales-y-curvas-integrales" class="nav-link" data-scroll-target="#integrales-y-curvas-integrales">Integrales y curvas integrales</a></li>
+  <li><a href="#considere-el-ejemplo" id="toc-considere-el-ejemplo" class="nav-link" data-scroll-target="#considere-el-ejemplo">Considere el ejemplo</a></li>
+  <li><a href="#ejercicios-2" id="toc-ejercicios-2" class="nav-link" data-scroll-target="#ejercicios-2">Ejercicios</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introducción</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="unidad-1" class="level1">
+<h1>Unidad 1</h1>
+<p>Cuando tenemos una ecuación como <span class="math inline">\(x+2=3\)</span> buscamos un valor de <span class="math inline">\(x\)</span> tal que satisfaga la ecuación en algún sentido, en el caso de ecuación diferencial ordinaria (EDO), ya no buscamos un número sino una función en una ecuación, la cual esta relacionada con sus derivadas. Por ejemplo <span id="eq-1"><span class="math display">\[
+\frac{dy}{dx}=5y(x),
+\tag{1}\]</span></span> aquí estamos buscando una función <span class="math inline">\(y(x)\)</span> cuya derivada sea <span class="math inline">\(5y(x)\)</span>. Nosotros podemos probar por simple inspección que esta función seria</p>
+<p><span class="math display">\[y(x)=Ce^{5x},\]</span> donde <span class="math inline">\(c\)</span> es una constante. Notemos que de esta forma no tenemos una sola función sino una familia de funciones. Lo que nos hace preguntarnos ¿Cómo debemos modificar la ecuación para obtengamos una única solución?. Para solucionar esta pregunta tenemos que agregar un termino llamado condición inicial el cual determina el valor de la función en un punto especifico, de esta forma, la ecuación (<a href="#eq-1">Equation&nbsp;1</a>) se puede reescribir de la forma</p>
+<p><span id="eq-2"><span class="math display">\[\label{eq2}
+\frac{dy}{dx}=5y(x), \ \ \ y(0)=1.
+\tag{2}\]</span></span></p>
+<section id="definiciones" class="level2">
+<h2 class="anchored" data-anchor-id="definiciones">Definiciones</h2>
+<ul>
+<li>Llamaremos ecuación diferencial ordinaria (abreviado EDO) a una ecuación que involucra a una variable independiente <span class="math inline">\(x\)</span>, una función <span class="math inline">\(y(x)\)</span> y una o varias derivadas de <span class="math inline">\(y(x)\)</span></li>
+</ul>
+<p>Ejemplos</p>
+<p><span class="math display">\[
+xy'(x)=y+5x-y^2,\ \ \ \ \  \ \ 3\frac{d^2y}{dx^2}=yx,\ \ \ \ \  \ \ \dot{y}=5xy+5y
+\]</span></p>
+<ul>
+<li><p>Llamaremos orden de una EDO al orden de la mayor derivada en la ecuación.</p></li>
+<li><p>Llamaremos una ecuación diferencial lineal de orden <span class="math inline">\(n\)</span> se la podemos escribir de la siguiente forma</p></li>
+</ul>
+<p><span class="math display">\[a_n(x)\frac{d^ny}{dx^n}+a_{n-1}(x)\frac{d^{n-1}y}{dx^{n-1}}+\cdots+a_1(x)\frac{dy}{dx}+a_0(x)y=b(x).\]</span></p>
+<ul>
+<li><p>Dada una EDO de orden <span class="math inline">\(n\)</span>, llamaremos solución de esta EDO a una función <span class="math inline">\(y = f (x)\)</span> definida en un intervalo <span class="math inline">\(I\)</span> y que tiene al menos <span class="math inline">\(n\)</span> derivadas continuas en el intervalo <span class="math inline">\(I\)</span>, de forma que cuando sustituimos <span class="math inline">\(y = f (x)\)</span> y sus derivadas en la EDO se cumple la ecuación en todo el intervalo</p></li>
+<li><p>Dada una EDO de orden <span class="math inline">\(n\)</span>, un intervalo <span class="math inline">\(I\)</span> y un punto <span class="math inline">\(x_0\in I\)</span>, llamaremos problema de valores iniciales (abreviado PVI) al problema de encontrar las funciones que cumplen la EDO de orden <span class="math inline">\(n\)</span> anterior en el intervalo <span class="math inline">\(I\)</span>. Además satisfacen las condiciones iniciales <span class="math display">\[y(x_0) = c_0, y'(x_0) = c_1, . . . , y^{(n-1)}(x_0) = c_{n-1},\]</span> donde los <span class="math inline">\(c_i\)</span> son <span class="math inline">\(n\)</span> números prefijados</p></li>
+</ul>
+<section id="ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios">Ejercicios</h3>
+<ol type="1">
+<li><p>En los siguientes problemas establezca el orden de la ecuación diferencial dada. Determine si la ecuación es lineal</p>
+<ul>
+<li><p><span class="math inline">\((1-x)y''=\cos x+y'''-y'\sin x\)</span></p></li>
+<li><p><span class="math inline">\(\frac{d^3y}{dx^3}+\cos y=x^2\)</span></p></li>
+<li><p><span class="math inline">\(x^6y^{(4)}+x^3y^{(3)}+\ln (x)y^{(1)}-y=\cos(x)\)</span></p></li>
+<li><p><span class="math inline">\(\frac{d^2x}{dt^2}+\frac{dx}{dt}+x =\ln (x+t)\)</span></p></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="cuando-una-función-es-solución-de-una-ecuación-diferencial" class="level2">
+<h2 class="anchored" data-anchor-id="cuando-una-función-es-solución-de-una-ecuación-diferencial">Cuando una función es solución de una ecuación diferencial</h2>
+<p>Para comprobar si una ecuación diferencial tiene una cierta solución lo único que debemos hacer es sustituir la función en la ecuación para comprobar si es la solución como mostraremos en el siguiente ejemplo</p>
+<p>Comprobemos que la función <span class="math inline">\(y(x)=4e^{-3x}+2\)</span> es solución de la ecuación <span class="math inline">\(2y''(x)+3y'(x)-9y(x)=-18\)</span></p>
+<p>para ello lo primero que hacemos es calcular las derivadas,</p>
+<p><span class="math inline">\(\begin{split} y'(x)&amp;=-12e^{-3x},\\ y''(x)&amp;=36e^{-3x}, \end{split}\)</span></p>
+<p>posteriormente sustituimos en la ecuación y comprobamos que la igualdad se satisfaga</p>
+<p><span class="math inline">\(\begin{split} 2y''(x)+3y'(x)-9y(x)&amp;=-18,\\ 2(36e^{-3x})+3(-12e^{-3x})-9(4e^{-3x}+2)&amp;=-18,\\ (72-36-36)e^{-3x}-18&amp;=-18,\\ -18&amp;=-18. \end{split}\)</span></p>
+<section id="ejercicios-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-1">Ejercicios</h3>
+<p>Compruebe que las familias de las funciones son soluciones de las ecuaciones * <span class="math inline">\(\frac{dP}{dt}=P(t)(1-P(t))\)</span> con la familia <span class="math inline">\(P=\frac{c_1e^t}{1+c_1e^t}\)</span>.</p>
+<ul>
+<li><p><span class="math inline">\(\frac{dy}{dx}+2xy=1\)</span> con la familia <span class="math inline">\(y=e^{-x^2}\int_0^xe^{t^2}dt+c_1e^{-x^2}\)</span>.</p></li>
+<li><p><span class="math inline">\(\frac{d^2y}{dx^2}-4\frac{dy}{dx}+4y=0\)</span> con la familia <span class="math inline">\(y=c_1e^{2x}+c_2xe^{2x}\)</span>.</p></li>
+<li><p><span class="math inline">\(xy'-2y=0\)</span> con la familia <span class="math inline">\(\begin{cases}-x^2,&amp;\ \  x&lt;0\\x^2,&amp;\ \  x\geq0\end{cases}\)</span>, en <span class="math inline">\((-\infty,\infty)\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="primer-método-para-encontrar-las-soluciones-de-una-edo-de-primer-orden" class="level2">
+<h2 class="anchored" data-anchor-id="primer-método-para-encontrar-las-soluciones-de-una-edo-de-primer-orden">Primer método para encontrar las soluciones de una EDO de primer orden</h2>
+<section id="ecuaciones-variables-separables" class="level3">
+<h3 class="anchored" data-anchor-id="ecuaciones-variables-separables">Ecuaciones Variables separables</h3>
+<p>La EDO de variable separable tiene la forma</p>
+<p><span class="math display">\[
+N(y)y'+M(x)=0.
+\]</span>{#equasol}</p>
+<p>Para resolver (<span class="citation" data-cites="equasol">@equasol</span>) el siguiente procedimiento</p>
+<ol type="1">
+<li><p>Separa las variables para escribir la EDO de la forma <span class="math inline">\(N(y)y'+M(x)=0\)</span>, e identificar los coeficientes <span class="math inline">\(N(y)\)</span> y <span class="math inline">\(M(x)\)</span>.</p></li>
+<li><p>Determine la antiderivada <span class="math inline">\(G(y)\)</span> para <span class="math inline">\(N(y)\)</span> y otra <span class="math inline">\(F(x)\)</span> para <span class="math inline">\(N(x)\)</span>.</p></li>
+<li><p>Todas las soluciones <span class="math inline">\(y=y(x)\)</span> satisfacen la ecuación <span class="math inline">\(G(y)+F(x)=C\)</span>, donde <span class="math inline">\(C\)</span> es una constante</p></li>
+</ol>
+</section>
+<section id="integrales-y-curvas-integrales" class="level3">
+<h3 class="anchored" data-anchor-id="integrales-y-curvas-integrales">Integrales y curvas integrales</h3>
+<p>Definiremos algunos términos nuevos</p>
+<p><em>Integrales y curvas integrales</em> Una función no constante <span class="math inline">\(H(x,y)\)</span> en un rectángulo Res una integral de la EDO <span class="math inline">\(Ny'+M=0\)</span> si para cualquier solución <span class="math inline">\(y(x)\)</span> cuya gráfica este dentro de R, <span class="math inline">\(H(x,y(x))=C\)</span> para alguna constante <span class="math inline">\(C\)</span>. El conjunto de puntos en R que satisfacen <span class="math inline">\(H(x,y)=C\)</span> es una curva integral de la EDO. Si C es una constante no especificada, entonces <span class="math inline">\(H(x,y)=C\)</span> es la solución general implicita de la EDO</p>
+</section>
+<section id="considere-el-ejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="considere-el-ejemplo">Considere el ejemplo</h3>
+<p><span class="math display">\[\begin{split}
+yy'-x&amp;=0,\\
+y\frac{dy}{dx}&amp;=x,\\
+ydy&amp;=xdx,\\
+\int ydy&amp;=\int xdx,\\
+\frac{y^2}{2}&amp;=\frac{x^2}{2}+c,\\
+y^2-x^2&amp;=c.
+\end{split}
+\]</span></p>
+<p>La ecuación <span class="math inline">\(y^2-x^2=c\)</span> es considerada una solución general o familia de soluciones, para determinar una solución que pase por la condición inicial <span class="math inline">\(y(0)=1\)</span>, sustituimos en la ecuación</p>
+<p><span class="math display">\[\begin{split}
+y^2(x)-x^2&amp;=c,\\
+y^2(0)-0^2&amp;=c,\\
+1^2-0&amp;=c\\
+1&amp;=c
+\end{split}
+\]</span></p>
+<p>de esta forma obtenemos que la solución del problema inicial es</p>
+<p><span class="math display">\[y^2-x^2=1\]</span></p>
+</section>
+<section id="ejercicios-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-2">Ejercicios</h3>
+<p>Encuentre 1. La curva integral de <span class="math inline">\(yy'+x=0\)</span> pasando por el punto <span class="math inline">\((2,-1)\)</span></p>
+<ol start="2" type="1">
+<li><p><span class="math inline">\((1-y^2)y'+x^2=0\)</span> Encuentre la solución general</p></li>
+<li><p><span class="math inline">\((1-y^2)y'+x^2=0\)</span>, encuentre la curva integral que pasando por el punto <span class="math inline">\((-1,1/2)\)</span></p></li>
+</ol>
+<p>s</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
