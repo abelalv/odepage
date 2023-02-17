@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ode - Campo de pendientes</title>
+<title>ode - Untitled</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,15 +89,17 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Introducción</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./campopen.html" aria-current="page">
+    <a class="nav-link" href="./campopen.html">
  <span class="menu-text">Campo de pendientes</span></a>
   </li>  
   <li class="dropdown-header">
  <span class="menu-text">linal1.qmd</span></li>
-  <li class="nav-item compact">
-    <a class="nav-link" href="./problemas.ipynb">
- <span class="menu-text"></span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="./problemas.html" aria-current="page">
+ <span class="menu-text">Untitled</span></a>
   </li>  
+  <li class="dropdown-header">
+ <span class="menu-text">taller1.ipynb</span></li>
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -113,9 +115,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ecuación-lógistica-verhulst" id="toc-ecuación-lógistica-verhulst" class="nav-link active" data-scroll-target="#ecuación-lógistica-verhulst">Ecuación Lógistica (Verhulst)</a>
+  <li><a href="#problemas-de-la-ley-d-enfriamiento-de-newton" id="toc-problemas-de-la-ley-d-enfriamiento-de-newton" class="nav-link active" data-scroll-target="#problemas-de-la-ley-d-enfriamiento-de-newton">Problemas de la ley d enfriamiento de Newton</a>
   <ul class="collapse">
-  <li><a href="#problema-un-modelo-de-ahorro" id="toc-problema-un-modelo-de-ahorro" class="nav-link" data-scroll-target="#problema-un-modelo-de-ahorro">Problema, un modelo de ahorro</a></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -125,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Campo de pendientes</h1>
+<h1 class="title">Untitled</h1>
 </div>
 
 
@@ -140,43 +142,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="ecuación-lógistica-verhulst" class="level2">
-<h2 class="anchored" data-anchor-id="ecuación-lógistica-verhulst">Ecuación Lógistica (Verhulst)</h2>
-<p>La solución de la ecuación logística es conocida como la <a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_log%C3%ADstica">función</a>, la cual se usa para modelar diferentes fenómenos como propagación de enfermedades, crecimiento poblacional difusión en redes sociales, entre otros.</p>
-<p>Supongamos que tenemos una población de peces en un estanque, y queremos modelar la población en un determinado tiempo. Para ello vamos a crear un modelo basado en ecuaciones diferenciales ordinarias, usando el siguiente principio</p>
-<p>La tasa de cambio neta de la población de peces en toneladas <span class="math inline">\(y'(t)\)</span> es equivalente a la tasa de nacimiento menos la tasa de muerte.</p>
-<p><font color="blue"><br>
-¿Podemos escribir esto como una ecuación diferencial? ¿Qué supuestos debemos incluir? </font></p>
-<p>Notemos que debemos incluir nuevos supuestos, por ejemplo,</p>
-<ul>
-<li><p>El modelo es continuo.</p></li>
-<li><p>La tasa de nacimiento de la población es proporcional a la población existente.</p></li>
-<li><p>Existe una “penalización” por el hecho de sobrepoblación.</p></li>
-<li><p>la tasa de reproducción es proporcional a la cantidad de recursos disponibles.</p></li>
-</ul>
-<p><span class="math display">\[\frac{dy}{dt}=ry\Big(1-\frac{y}{k}\Big),\]</span></p>
-<p>La familia de soluciones de este modelo es</p>
-<p><span class="math display">\[y(t)=\frac{ky_0e^{rt}}{k+y_0e^{rt}},\]</span> donde <span class="math inline">\(y_0\)</span> es la condición inicial del problema.</p>
-<div class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div id="fig-camp" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="campopen_files/figure-html/fig-camp-output-1.png" width="558" height="439" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Campo de pendientes</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div id="fig-sol" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="campopen_files/figure-html/fig-sol-output-1.png" width="576" height="457" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Campo de pendientes y solución</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="problemas-de-la-ley-d-enfriamiento-de-newton" class="level1">
+<h1>Problemas de la ley d enfriamiento de Newton</h1>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -187,41 +154,40 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En este momento nos podemos realizar muchas preguntas</p>
+<p>Ley de enfriamineto de Newton</p>
+<p>La velocidad con que se calienta (o enfría) un objeto es proporcional a la diferencia entre su temperatura <span class="math inline">\(𝑇\)</span> y la temperatura ambiente <span class="math inline">\(𝑇_a\)</span></p>
+</div>
+</div>
+<p>Formulación de la ecuación diferencial Si <span class="math inline">\(T(t)\)</span> es la función que nos da la temperatura del cuerpo en cada segundo de tiempo <span class="math inline">\(t\)</span>, esta ley puede expresarse mediante una ecuación diferencial de variables separables.</p>
+<p><span class="math display">\[\frac{dT}{dt} = 𝑘(𝑇 − 𝑇_a),\]</span> donde <span class="math inline">\(T_a\)</span> es la temperatura ambiente y <span class="math inline">\(k\)</span> es una constante de proporcionalidad que depende en cada caso concreto de las características físicas del objeto.</p>
+<section id="ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo">Ejemplo</h2>
+<p>Una pequeña barra de metal, cuya temperatura inicial es de <span class="math inline">\(20^{\circ}C\)</span>, se deja caer en un recipiente con agua hirviendo. Sabiendo que su temperatura aumentó <span class="math inline">\(2^{\circ}C\)</span> en un segundo:</p>
+<ol type="1">
+<li><p>Calcular la función que nos proporciona la temperatura del cuerpo en cada instante <span class="math inline">\(t\)</span>.</p></li>
+<li><p>Calcular el tiempo que tarda la barra en alcanzar <span class="math inline">\(90^{\circ}C\)</span>.</p></li>
+<li><p>Calcular el tiempo que tarda la barra en alcanzar <span class="math inline">\(98^{\circ}C\)</span></p></li>
+</ol>
+<p>Cuando un objeto absorbe calor del medio que lo rodea sigue la ley del calentamiento de Newton. En este caso debemos resolver la ecuación <span class="math display">\[\frac{dT}{dt} = 𝑘(𝑇 − T_a),\]</span> Sabiendo que</p>
+<p><span class="math display">\[T_a = 100^{\circ}\]</span> <span class="math display">\[𝑇(0) = 20^{\circ}\]</span> <span class="math display">\[𝑇(1) = 22^{\circ}\]</span></p>
 <ul>
-<li>¿Cómo es el comportamiento de la solución para tiempos largos?</li>
-<li>En este caso, ¿por que “casi” con cualquier condición inicial tenemos el mismo comportamiento para tiempos grandes?</li>
-<li>¿Exíste alguna relación entre el comportamiento y la función <span class="math inline">\(f(y)=ry\Big(1-\frac{y}{k}\Big)\)</span></li>
+<li>Resolvemos la ecuación</li>
 </ul>
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<p><span class="math inline">\(\displaystyle T{\left(t \right)} = C_{1} e^{k t} + T_{a}\)</span></p>
 </div>
 </div>
-<section id="problema-un-modelo-de-ahorro" class="level3">
-<h3 class="anchored" data-anchor-id="problema-un-modelo-de-ahorro">Problema, un modelo de ahorro</h3>
-<p>Suponga que depositamos <span class="math inline">\(\$ 5000\)</span> en una cuenta de ahorros con intereses devengados a una tasa de capitalización continua del <span class="math inline">\(2\%\)</span>. Si dejamos que <span class="math inline">\(A (t)\)</span> denote la cantidad de dinero en la cuenta en el tiempo t, entonces la ecuación diferencial para <span class="math inline">\(A\)</span> es</p>
-<p><span class="math display">\[\frac{dA}{dt}=0.02A.\]</span></p>
-<ul>
-<li>¿Encuentre la solución analítica</li>
-<li>Suponiendo que el interés nunca cambia, cual sería el dinero que tendría después de 10 años</li>
-</ul>
-<p>Si vemos que al cabo de 10 años, tenemos una buena cantidad de dinero, por ende decidimos retirar cada año la cantidad de <span class="math inline">\(\$ 500\)</span>, la ecuación diferencial cambia de la siguiente forma, cuando <span class="math inline">\(t&gt;10\)</span></p>
-<p><span class="math display">\[\frac{dA}{dt}=0.02A-500.\]</span></p>
-<p>De esta forma podemos expresar la ecuación para todo tiempo</p>
-<p><span class="math display">\[\frac{dA}{dt}=\begin{cases}0.02A &amp;\text{ si }\ t&lt;10,\\0.02A-500 &amp;\text{ si }  t\geq10.\end{cases}\]</span></p>
-<ul>
-<li><p>¿Al cabo de 12 años cuanto dinero tendremos?</p></li>
-<li><p>¿Al cabo de cuanto tiempo me voy a quedar sin dinero años cuanto dinero tendremos?</p></li>
-<li><p>Suponiendo que podría vivir con 500 al año, ¿Cual debería ser el monto inicial para poder vivir de por vida?</p></li>
-</ul>
-<div class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<div id="fig-ahorro" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="campopen_files/figure-html/fig-ahorro-output-1.png" width="592" height="411" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Ejemplo de ahorro</figcaption><p></p>
-</figure>
+<p>usando la condición inical tenemos que</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<p><span class="math inline">\(\displaystyle T{\left(t \right)} = 100 - 80 e^{k t}\)</span></p>
 </div>
 </div>
-</div>
+<p>¿Cómo podemos encotrar el valor de <span class="math inline">\(k\)</span>? <span class="math display">\[k=ln\Big(\frac{39}{40}\Big).\]</span> ¡Podemos hacer un análisis gráfico del campo de pendientes!</p>
+<pre class="{phyton}"><code>#| warning: false
+
+</code></pre>
 
 
 </section>

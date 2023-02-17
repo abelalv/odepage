@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -81,16 +81,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">Home</a>
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page">Introducción</a>
+    <a class="nav-link active" href="./about.html" aria-current="page">
+ <span class="menu-text">Introducción</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./campopen.html">Campo de pendientes</a>
+    <a class="nav-link" href="./campopen.html">
+ <span class="menu-text">Campo de pendientes</span></a>
   </li>  
   <li class="dropdown-header">
- linal1.qmd</li>
+ <span class="menu-text">linal1.qmd</span></li>
+  <li class="nav-item">
+    <a class="nav-link" href="./problemas.html">
+ <span class="menu-text">Untitled</span></a>
+  </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -123,6 +130,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#considere-el-ejemplo" id="toc-considere-el-ejemplo" class="nav-link" data-scroll-target="#considere-el-ejemplo">Considere el ejemplo</a></li>
   <li><a href="#ejercicios-2" id="toc-ejercicios-2" class="nav-link" data-scroll-target="#ejercicios-2">Ejercicios</a></li>
   </ul></li>
+  <li><a href="#ecuación-lógistica-verhulst" id="toc-ecuación-lógistica-verhulst" class="nav-link" data-scroll-target="#ecuación-lógistica-verhulst">Ecuación Lógistica (Verhulst)</a>
+  <ul class="collapse">
+  <li><a href="#problema-un-modelo-de-ahorro" id="toc-problema-un-modelo-de-ahorro" class="nav-link" data-scroll-target="#problema-un-modelo-de-ahorro">Problema, un modelo de ahorro</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -140,6 +151,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -253,7 +265,90 @@ y^2(0)-0^2&amp;=c,\\
 <li><p><span class="math inline">\((1-y^2)y'+x^2=0\)</span> Encuentre la solución general</p></li>
 <li><p><span class="math inline">\((1-y^2)y'+x^2=0\)</span>, encuentre la curva integral que pasando por el punto <span class="math inline">\((-1,1/2)\)</span></p></li>
 </ol>
-<p>s</p>
+</section>
+</section>
+<section id="ecuación-lógistica-verhulst" class="level2">
+<h2 class="anchored" data-anchor-id="ecuación-lógistica-verhulst">Ecuación Lógistica (Verhulst)</h2>
+<p>La solución de la ecuación logística es conocida como la <a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_log%C3%ADstica">función</a>, la cual se usa para modelar diferentes fenómenos como propagación de enfermedades, crecimiento poblacional difusión en redes sociales, entre otros.</p>
+<p>Supongamos que tenemos una población de peces en un estanque, y queremos modelar la población en un determinado tiempo. Para ello vamos a crear un modelo basado en ecuaciones diferenciales ordinarias, usando el siguiente principio</p>
+<p>La tasa de cambio neta de la población de peces en toneladas <span class="math inline">\(y'(t)\)</span> es equivalente a la tasa de nacimiento menos la tasa de muerte.</p>
+<p><font color="blue"><br>
+¿Podemos escribir esto como una ecuación diferencial? ¿Qué supuestos debemos incluir? </font></p>
+<p>Notemos que debemos incluir nuevos supuestos, por ejemplo,</p>
+<ul>
+<li><p>El modelo es continuo.</p></li>
+<li><p>La tasa de nacimiento de la población es proporcional a la población existente.</p></li>
+<li><p>Existe una “penalización” por el hecho de sobrepoblación.</p></li>
+<li><p>la tasa de reproducción es proporcional a la cantidad de recursos disponibles.</p></li>
+</ul>
+<p><span class="math display">\[\frac{dy}{dt}=ry\Big(1-\frac{y}{k}\Big),\]</span></p>
+<p>La familia de soluciones de este modelo es</p>
+<p><span class="math display">\[y(t)=\frac{ky_0e^{rt}}{k+y_0e^{rt}},\]</span> donde <span class="math inline">\(y_0\)</span> es la condición inicial del problema.</p>
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div id="fig-camp" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="about_files/figure-html/fig-camp-output-1.png" width="558" height="439" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Campo de pendientes</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="fig-sol" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="about_files/figure-html/fig-sol-output-1.png" width="576" height="457" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Campo de pendientes y solución</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En este momento nos podemos realizar muchas preguntas</p>
+<ul>
+<li>¿Cómo es el comportamiento de la solución para tiempos largos?</li>
+<li>En este caso, ¿por que “casi” con cualquier condición inicial tenemos el mismo comportamiento para tiempos grandes?</li>
+<li>¿Exíste alguna relación entre el comportamiento y la función <span class="math inline">\(f(y)=ry\Big(1-\frac{y}{k}\Big)\)</span></li>
+</ul>
+</div>
+</div>
+<section id="problema-un-modelo-de-ahorro" class="level3">
+<h3 class="anchored" data-anchor-id="problema-un-modelo-de-ahorro">Problema, un modelo de ahorro</h3>
+<p>Suponga que depositamos <span class="math inline">\(\$ 5000\)</span> en una cuenta de ahorros con intereses devengados a una tasa de capitalización continua del <span class="math inline">\(2\%\)</span>. Si dejamos que <span class="math inline">\(A (t)\)</span> denote la cantidad de dinero en la cuenta en el tiempo t, entonces la ecuación diferencial para <span class="math inline">\(A\)</span> es</p>
+<p><span class="math display">\[\frac{dA}{dt}=0.02A.\]</span></p>
+<ul>
+<li>¿Encuentre la solución analítica</li>
+<li>Suponiendo que el interés nunca cambia, cual sería el dinero que tendría después de 10 años</li>
+</ul>
+<p>Si vemos que al cabo de 10 años, tenemos una buena cantidad de dinero, por ende decidimos retirar cada año la cantidad de <span class="math inline">\(\$ 500\)</span>, la ecuación diferencial cambia de la siguiente forma, cuando <span class="math inline">\(t&gt;10\)</span></p>
+<p><span class="math display">\[\frac{dA}{dt}=0.02A-500.\]</span></p>
+<p>De esta forma podemos expresar la ecuación para todo tiempo</p>
+<p><span class="math display">\[\frac{dA}{dt}=\begin{cases}0.02A &amp;\text{ si }\ t&lt;10,\\0.02A-500 &amp;\text{ si }  t\geq10.\end{cases}\]</span></p>
+<ul>
+<li><p>¿Al cabo de 12 años cuanto dinero tendremos?</p></li>
+<li><p>¿Al cabo de cuanto tiempo me voy a quedar sin dinero años cuanto dinero tendremos?</p></li>
+<li><p>Suponiendo que podría vivir con 500 al año, ¿Cual debería ser el monto inicial para poder vivir de por vida?</p></li>
+</ul>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="fig-ahorro" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="about_files/figure-html/fig-ahorro-output-1.png" width="592" height="411" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Ejemplo de ahorro</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -302,7 +397,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -338,24 +450,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
