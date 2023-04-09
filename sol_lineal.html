@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ode - Sistemas Linales con coeficientes constantes y homogeneos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ode</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">Introducción</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./campopen.html">
+ <span class="menu-text">Campo de pendientes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./lienal1.html">
+ <span class="menu-text">Solución Lineal de primer orden</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./problemas.html">
+ <span class="menu-text">Problemas</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./taller_1.html">
+ <span class="menu-text">Taller de Repaso</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./sol_lineal.html" aria-current="page">
+ <span class="menu-text">Sistemas Linales con coeficientes constantes y homogeneos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Taller_2_orden_a.html">
+ <span class="menu-text">Taller de ecuaciones diferenciales de segundo orden</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./sistemas.html">
+ <span class="menu-text">Sistema de ecuaciones diferenciales</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./nonlinear.html">
+ <span class="menu-text">Sistemas no lineales</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#solución-de-sistemas-de-ecuaciones-diferenciales-lineales" id="toc-solución-de-sistemas-de-ecuaciones-diferenciales-lineales" class="nav-link active" data-scroll-target="#solución-de-sistemas-de-ecuaciones-diferenciales-lineales">Solución de sistemas de ecuaciones diferenciales lineales</a>
+  <ul class="collapse">
+  <li><a href="#cuando-la-multiplicidad-algebraica-y-geometrica-coinciden" id="toc-cuando-la-multiplicidad-algebraica-y-geometrica-coinciden" class="nav-link" data-scroll-target="#cuando-la-multiplicidad-algebraica-y-geometrica-coinciden">Cuando la multiplicidad algebraica y geometrica coinciden</a>
+  <ul class="collapse">
+  <li><a href="#caso-1-dos-autovalores-reales-diferentes" id="toc-caso-1-dos-autovalores-reales-diferentes" class="nav-link" data-scroll-target="#caso-1-dos-autovalores-reales-diferentes"><strong>Caso 1</strong> Dos autovalores reales diferentes</a></li>
+  </ul></li>
+  <li><a href="#casos-2-un-autovalor-real-y-dos-autovalores" id="toc-casos-2-un-autovalor-real-y-dos-autovalores" class="nav-link" data-scroll-target="#casos-2-un-autovalor-real-y-dos-autovalores"><strong>Casos 2</strong> un autovalor real y dos autovalores</a></li>
+  <li><a href="#casos-3-dos-autovalores-complejos" id="toc-casos-3-dos-autovalores-complejos" class="nav-link" data-scroll-target="#casos-3-dos-autovalores-complejos"><strong>Casos 3</strong> Dos autovalores Complejos</a></li>
+  <li><a href="#ejemplo-1" id="toc-ejemplo-1" class="nav-link" data-scroll-target="#ejemplo-1"><strong>Ejemplo</strong></a></li>
+  </ul></li>
+  <li><a href="#cuando-la-multipliciada-algebraica-y-geometrica-no-coinciden" id="toc-cuando-la-multipliciada-algebraica-y-geometrica-no-coinciden" class="nav-link" data-scroll-target="#cuando-la-multipliciada-algebraica-y-geometrica-no-coinciden">Cuando la multipliciada algebraica y geometrica no coinciden</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sistemas Linales con coeficientes constantes y homogeneos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="solución-de-sistemas-de-ecuaciones-diferenciales-lineales" class="level1">
+<h1>Solución de sistemas de ecuaciones diferenciales lineales</h1>
+<p>Sea el siguiente sistema de ecuaciones diferenciales lineales</p>
+<p><span class="math display">\[x'(t)=Ax(t)\]</span></p>
+<p>donde $$ y la matriz</p>
+<p><span class="math display">\[A= \left[\begin{matrix}
+a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}
+\end{matrix}\right]\]</span> donde los elementos de <span class="math inline">\(a_{ij}\)</span> son constantes.</p>
+<p>Para encontrar la solución del sistema debemos estudiar sus autovalores y autovectores, pues segun multiplicidad podemos cálcular la solución del problema.</p>
+<section id="cuando-la-multiplicidad-algebraica-y-geometrica-coinciden" class="level2">
+<h2 class="anchored" data-anchor-id="cuando-la-multiplicidad-algebraica-y-geometrica-coinciden">Cuando la multiplicidad algebraica y geometrica coinciden</h2>
+<p>Este caso sucede cuando tienen</p>
+<ul>
+<li>Dos autovalores reales diferentes</li>
+<li>Tiene un autovalor real pero dos autovectores</li>
+<li>Tienen autovalores complejos</li>
+</ul>
+<section id="caso-1-dos-autovalores-reales-diferentes" class="level3">
+<h3 class="anchored" data-anchor-id="caso-1-dos-autovalores-reales-diferentes"><strong>Caso 1</strong> Dos autovalores reales diferentes</h3>
+<p>Cuando una matriz <span class="math inline">\(2\times 2\)</span> tiene dos autovalores reales diferentes esta se puede diagonalizar, es decir supongamos que <span class="math inline">\(A\)</span> tiene los autovalores <span class="math inline">\(\lambda_1\)</span> y <span class="math inline">\(\lambda_2\)</span> con los autovectores asociados <span class="math inline">\(v_1,v_2\)</span>, respectivamente <span class="math display">\[A= \begin{pmatrix}
+a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}
+\end{pmatrix}=V\begin{pmatrix}
+\lambda_1&amp;\\&amp;\lambda_2
+\end{pmatrix}V^{-1},\]</span> donde <span class="math inline">\(V=[v_1,v_2]\)</span>.</p>
+<p>La solcuión del sistema de ecuaciones diferenciales</p>
+<p><span class="math display">\[x'=Ax\]</span></p>
+<p>esta determindo por</p>
+<p><span class="math display">\[x(t)=\begin{pmatrix}
+x_1(t)\\x_2(t)
+\end{pmatrix}=C_1 v_1e^{\lambda_1t}+C_2 v_2e^{\lambda_2t}\]</span></p>
+<section id="ejemplo" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo"><strong>Ejemplo</strong></h4>
+<p>Sea el sistema de ecuaciones</p>
+<p><span class="math display">\[\begin{cases}x'(t)&amp;=5x(t)+3y(t)\\y'(t)&amp;=-6x(t)-4y(t),\end{cases}\]</span></p>
+<p>Note que este sistema se puede escribir de la forma</p>
+<p><span class="math display">\[\frac{d}{dt}\begin{pmatrix}
+x(t)\\y(t)
+\end{pmatrix}=\begin{pmatrix}
+5&amp;3\\-6&amp;-4
+\end{pmatrix}\begin{pmatrix}
+x(t)\\y(t)
+\end{pmatrix},\]</span></p>
+<p>donde la matriz <span class="math inline">\(A=\begin{pmatrix} 5&amp;3\\-6&amp;-4 \end{pmatrix}\)</span> tiene dos autovalores <span class="math inline">\(\lambda_1=-1\)</span> y <span class="math inline">\(\lambda_2=2\)</span> con sus respectivos autovectores <span class="math inline">\(v_1=\begin{pmatrix} 1\\-2 \end{pmatrix}\)</span> y <span class="math inline">\(v_2=\begin{pmatrix} 1\\-1 \end{pmatrix}.\)</span> Deesta for,a podemos definir</p>
+<p><span class="math display">\[V=\begin{pmatrix}
+1&amp;1\\-2&amp;-1
+\end{pmatrix}\]</span></p>
+<p>y tenemos que</p>
+<p><span class="math display">\[V^{-1}=\begin{pmatrix}
+-1&amp;-1\\2&amp;1
+\end{pmatrix}.\]</span></p>
+<p>Note que <span class="math display">\[A=\begin{pmatrix}
+5&amp;3\\-6&amp;-4
+\end{pmatrix}=\begin{pmatrix}
+1&amp;1\\-2&amp;-1
+\end{pmatrix}\begin{pmatrix}
+-1&amp;\\&amp;2
+\end{pmatrix}\begin{pmatrix}
+-1&amp;-1\\2&amp;1
+\end{pmatrix}.\]</span> sustituyendo esto en el sistema obtenemos</p>
+<p><span class="math display">\[\frac{d}{dt}\begin{pmatrix}
+x(t)\\y(t)
+\end{pmatrix}=\begin{pmatrix}
+1&amp;1\\-2&amp;-1
+\end{pmatrix}\begin{pmatrix}
+-1&amp;\\&amp;2
+\end{pmatrix}\begin{pmatrix}
+-1&amp;-1\\2&amp;1
+\end{pmatrix}\begin{pmatrix}
+x(t)\\y(t)
+\end{pmatrix},\]</span></p>
+<p>multiplicando la igualda por <span class="math inline">\(V^{-1}\)</span></p>
+<p><span class="math display">\[\frac{d}{dt}\begin{pmatrix}
+-1&amp;-1\\2&amp;1
+\end{pmatrix}\begin{pmatrix}
+x(t)\\y(t)
+\end{pmatrix}=\begin{pmatrix}
+-1&amp;\\&amp;2
+\end{pmatrix}\begin{pmatrix}
+-1&amp;-1\\2&amp;1
+\end{pmatrix}\begin{pmatrix}
+x(t)\\y(t)
+\end{pmatrix},\]</span></p>
+<p>haciendo</p>
+<p><span class="math display">\[w(t)=\left[\begin{matrix}
+w_1(t)\\w_2(t)
+\end{matrix}\right]=\left[\begin{matrix}
+-1&amp;-1\\2&amp;1
+\end{matrix}\right]\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right]\]</span></p>
+<p>obteneomos el sistema</p>
+<p><span class="math display">\[\frac{d}{dt}\left[\begin{matrix}
+w_1(t)\\w_2(t)
+\end{matrix}\right]=\left[\begin{matrix}
+-1&amp;\\&amp;2
+\end{matrix}\right]\left[\begin{matrix}
+w_1(t)\\w_2(t)
+\end{matrix}\right],\]</span> el cual se reduce a un sistema desacoplado</p>
+<p><span class="math display">\[\begin{cases}w_1'(t)=-w_1(t)\\w_2'(t)=2w_2(t)\end{cases}\]</span> de esta forma tenemos la solución <span class="math display">\[\begin{cases}w_1(t)=C_1e^{-t}\\w_2(t)=C_2e^{2t}\end{cases}\]</span></p>
+<p>sustituyendo en</p>
+<p><span class="math display">\[\left[\begin{matrix}
+C_1e^{-t}\\C_2e^{2t}
+\end{matrix}\right]=\left[\begin{matrix}
+-1&amp;-1\\2&amp;1
+\end{matrix}\right]\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right]\]</span></p>
+<p>de esta forma tenemos que la solución es <span class="math display">\[\left[\begin{matrix}
+x(t)\\y(t)\end{matrix}\right]=C_1e^{-t}\left[\begin{matrix}
+1\\-2
+\end{matrix}\right]+C_2e^{2t}\left[\begin{matrix}
+1\\-1
+\end{matrix}\right]
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="casos-2-un-autovalor-real-y-dos-autovalores" class="level2">
+<h2 class="anchored" data-anchor-id="casos-2-un-autovalor-real-y-dos-autovalores"><strong>Casos 2</strong> un autovalor real y dos autovalores</h2>
+<p>Sea el sistema de <span class="math display">\[\begin{cases}x'(t)=x(t),\\
+y'(t)=y(t),\end{cases}\]</span> este se puede escribir de la forma <span class="math display">\[\frac{d}{dt}\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right]=\left[\begin{matrix}
+1&amp;0\\0&amp;1
+\end{matrix}\right]\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right].\]</span> Note que la matriz <span class="math inline">\(A=\left[\begin{matrix} 1&amp;0\\0&amp;1 \end{matrix}\right]\)</span> tiene un autovalor y dos atovectores, el autovalor <span class="math inline">\(\lambda=1\)</span> y dos autovectores <span class="math inline">\(v_1=\left[\begin{matrix} 1\\0 \end{matrix}\right]\)</span> y <span class="math inline">\(v_2=\left[\begin{matrix} 0\\1 \end{matrix}\right]\)</span>, por tanto la solución del sistema</p>
+<p>es</p>
+<p><span class="math display">\[\begin{split}\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right]&amp;=C_1e^{\lambda t}v_1+C_2e^{\lambda t}v_2,\\
+&amp;=C_1e^{t}\left[\begin{matrix}
+0\\1
+\end{matrix}\right]+C_2e^{t}\left[\begin{matrix}
+1\\0
+\end{matrix}\right].\end{split}\]</span></p>
+<p>note que aui porcedemos igual que el <strong>caso 1</strong> y esto es porque la matriz <span class="math inline">\(A\)</span> se puede diagonalizar.</p>
+</section>
+<section id="casos-3-dos-autovalores-complejos" class="level2">
+<h2 class="anchored" data-anchor-id="casos-3-dos-autovalores-complejos"><strong>Casos 3</strong> Dos autovalores Complejos</h2>
+<p>Sea el sistema</p>
+<p><span class="math display">\[\begin{cases}x'(t)=6x(t)-y,\\
+y'(t)=5x+4y(t),\end{cases}\]</span></p>
+<p>este se puede escribir de la forma <span class="math display">\[\frac{d}{dt}\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right]=\left[\begin{matrix}
+6&amp;-1\\5&amp;4
+\end{matrix}\right]\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right].\]</span> Note que la matriz <span class="math inline">\(A=\left[\begin{matrix} 6&amp;-1\\5&amp;4 \end{matrix}\right]\)</span> en el caso que la matriz A tiene dos autovalores complejos, puesto que</p>
+<p><span class="math display">\[det(A-\lambda I)=\left|\begin{matrix}
+6-\lambda &amp;-1\\
+5&amp; 4-\lambda
+\end{matrix}\right|=\lambda^2-10\lambda +29,\]</span> las raíces de este polinomio son <span class="math inline">\(\lambda_1=5+2i\)</span> y <span class="math inline">\(\lambda_2=5-2i\)</span>, lo cual quiere decir que uno es el conjugado del otro, es decir ellos tienen la forma <span class="math inline">\(\lambda_1=\alpha+i\beta\)</span> y <span class="math inline">\(\lambda_2=\alpha-i\beta\)</span>, de aqui notamos que los autovectores tambien son números complejos. Recordemos el precedimiento para encontrar un autovector <span class="math display">\[\begin{split}Av_1&amp;=\lambda_1 v_1\\
+(A-\lambda_1 I)v_1&amp;=0\end{split}\]</span> Sustituyendo en la matriz <span class="math inline">\(A\)</span> y el valor de <span class="math inline">\(\lambda_1\)</span> en la ecuación anterior</p>
+<p><span class="math display">\[\begin{split}
+\left[\begin{matrix}
+6-\lambda_1 &amp;-1\\
+5&amp; 4-\lambda_1
+\end{matrix}\right]\left[\begin{matrix}
+v_{11}\\
+v_{12}
+\end{matrix}\right]&amp;=\left[\begin{matrix}
+0\\
+0
+\end{matrix}\right]\\
+\left[\begin{matrix}
+6-(5+2i) &amp;-1\\
+5&amp; 4-(5+2i)
+\end{matrix}\right]\left[\begin{matrix}
+v_{11}\\
+v_{12}
+\end{matrix}\right]&amp;=\left[\begin{matrix}
+0\\
+0
+\end{matrix}\right]\\
+\left[\begin{matrix}
+1+2i &amp;-1\\
+5&amp; -(1+2i)
+\end{matrix}\right]\left[\begin{matrix}
+v_{11}\\
+v_{12}
+\end{matrix}\right]&amp;=\left[\begin{matrix}
+0\\
+0
+\end{matrix}\right]
+\end{split}\]</span> Note que el <span class="math inline">\(det\left(\left[\begin{matrix} 1+2i &amp;-1\\  5&amp; -(1+2i) \end{matrix}\right]\right)=0\)</span>, por tanto el sistema se reduce a una sola ecuación, así</p>
+<p><span class="math display">\[(1-2i)v_{11}-v_{12}=0,\]</span> de esta forma si tomamos <span class="math inline">\(v_{11}=1\)</span> tenemos que <span class="math inline">\(v_{12}=1-2i\)</span>, asi el autovector <span class="math display">\[\begin{split}v_1&amp;=\left[\begin{matrix}
+1\\
+1-2i
+\end{matrix}\right]\\&amp;=\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]-i\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]\end{split}.\]</span> Realizando un procedimietno similar tenemos que el autovector asociado al autovalor <span class="math inline">\(\lambda_2=5-2i\)</span> <span class="math display">\[\begin{split}v_2&amp;=\left[\begin{matrix}
+1\\
+1+2i
+\end{matrix}\right]\\&amp;=\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]+i\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]\end{split}.\]</span></p>
+<p>Note que <span class="math inline">\(v_1=\overline{v_2}\)</span>. Siguiendo el procedimiento del <strong>caso 1</strong> vemos que la matriz <span class="math inline">\(A\)</span> es daognalizable en el campo de los complejos, de esta forma tendriamos la solución</p>
+<p>de esta forma tenemos que la solución es <span class="math display">\[\begin{split}\left[\begin{matrix}
+x(t)\\y(t)\end{matrix}\right]&amp;=C_1v_1e^{\lambda_1 t}+C_2v_2e^{\lambda_2 t}\\
+&amp;=C_1e^{(5+2i)t}\left[\begin{matrix}
+1\\1-2i
+\end{matrix}\right]+C_2e^{(5-2i)t}\left[\begin{matrix}
+1\\1+2i
+\end{matrix}\right]\\
+&amp;=C_1e^{(5+2i)t}\left(\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]-i\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]\right)+C_2e^{(5-2i)t}\left(\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]+i\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]\right)\end{split}
+\]</span></p>
+<p>como nosotros queremos encontrar la solución real del sistema, usaremos la identidad <span class="math inline">\(e^{(\alpha+i\beta)}=e^{\alpha}(\cos\beta+i\sin\beta)\)</span>, luego <span class="math display">\[\begin{split}\left[\begin{matrix}
+x(t)\\y(t)\end{matrix}\right]&amp;=e^{5t}\left(C_1(\cos(2t)+i\sin(2t))\left(\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]-i\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]\right)+C_2(\cos(2t)-i\sin(2t))\left(\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]+i\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]\right)\right)\end{split}
+\]</span></p>
+<p><strong>Recordemos</strong> que la multiplicación de dos numeros complejos es de la siguiente forma: <span class="math display">\[(a_1+ib_1)*(a_2+ib_2)=a_1a_2-b_1b_2+i(a_1b_2+a_2b_1)\]</span></p>
+<p>de esta forma tenemos que</p>
+<p><span class="math display">\[\begin{split}C_1(\cos(2t)+i\sin(2t))\left(\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]-i\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]\right)&amp;=C_1\left\{\left(\cos(2t)\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]+\sin(2t)\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right] \right)-i\left(\cos(2t)\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]-\sin(2t)\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right] \right)\right\}\end{split}\]</span></p>
+<p>de la misma forma</p>
+<p><span class="math display">\[\begin{split}C_2(\cos(2t)-i\sin(2t))\left(\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]-i\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]\right)&amp;=C_2\left\{\left(\cos(2t)\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]-\sin(2t)\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right] \right)-i\left(\cos(2t)\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]+\sin(2t)\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right] \right)\right\}\end{split}\]</span></p>
+<p>de esta forma la parte real se tiene</p>
+<p><span class="math display">\[\begin{split}real\left(\left[\begin{matrix}
+x(t)\\y(t)\end{matrix}\right]\right)&amp;=e^{5t}\left\{C_1\left(\cos(2t)\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]+\sin(2t)\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right] \right)+C_2\left(\cos(2t)\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right]-\sin(2t)\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right] \right)\right\}\end{split}
+\]</span> <strong>Note</strong> que esta forma si tenemos un sistema EDO lieal homogeneo con coeficientes constantes lo podemos escribir la solcuón de la forma <span class="math inline">\(B_1=real(v_1)\)</span> y <span class="math inline">\(B_2=img(v_1)\)</span></p>
+<p>De la misma forma tenemos la parte imaginaria de la ecuación es <span class="math display">\[\begin{split}Img\left(\left[\begin{matrix}
+x(t)\\y(t)\end{matrix}\right]\right)&amp;=-e^{5t}\left\{C_1\left(\cos(2t)\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]-\sin(2t)\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right] \right)+C_2\left(\cos(2t)\left[\begin{matrix}
+0\\
+2
+\end{matrix}\right]+\sin(2t)\left[\begin{matrix}
+1\\
+1
+\end{matrix}\right] \right)\right\}\end{split}
+\]</span></p>
+<p>De esta forma podemos tener podemos construir <span class="math display">\[X_1=\Big[B_1\cos\beta t-B_2\sin\beta t\Big]e^{\alpha t}\]</span> <span class="math display">\[X_2=\Big[B_2\cos\beta t+B_1\sin\beta t\Big]e^{\alpha t}\]</span></p>
+<p>y así construir la solución general <span class="math display">\[X=C_1X_1+C_2X_2\]</span> donde <span class="math inline">\(B_1=real(v_1)\)</span> y <span class="math inline">\(B_2=img(v_1)\)</span> e <span class="math inline">\(\lambda=\alpha+i\beta\)</span></p>
+</section>
+<section id="ejemplo-1" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-1"><strong>Ejemplo</strong></h2>
+<p>Resuleva el problema <span class="math display">\[\begin{cases}
+x'= 2x+8y\\
+y'=-x-2y
+\end{cases}\]</span> de aqui tenemos que el sistema s epuede expresar como</p>
+<p><span class="math display">\[\frac{d}{dt}\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right]=\left[\begin{matrix}
+2&amp;8\\-1&amp;-2
+\end{matrix}\right]\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right],\]</span> y tiene como autovalor <span class="math inline">\(\lambda=2i\)</span> y autovector <span class="math inline">\(v_1=\left[\begin{matrix} 2+2i\\-1 \end{matrix}\right]\)</span> de esta forma tenemos la solución es <span class="math display">\[\begin{split}\left[\begin{matrix}
+x(t)\\y(t)\end{matrix}\right]=e^{0}\left\{C_1\left(\cos(2t)\left[\begin{matrix}
+2\\
+-1
+\end{matrix}\right]-\sin(2t)\left[\begin{matrix}
+2\\
+0
+\end{matrix}\right] \right)+C_2\left(\cos(2t)\left[\begin{matrix}
+2\\
+0
+\end{matrix}\right]+\sin(2t)\left[\begin{matrix}
+2\\
+-1
+\end{matrix}\right] \right)\right\}\end{split}
+\]</span></p>
+</section>
+</section>
+<section id="cuando-la-multipliciada-algebraica-y-geometrica-no-coinciden" class="level1">
+<h1>Cuando la multipliciada algebraica y geometrica no coinciden</h1>
+<p>Este caso es cuando tiene un único eigenvalor y un único eigenvector</p>
+<p>Un ejemplo de ello es el sistema <span class="math display">\[\begin{cases}
+x'= 3x-18y\\
+y'=2x-9y
+\end{cases}\]</span></p>
+<p>Note que el sistema se puede escribir de la forma</p>
+<p><span class="math display">\[\frac{d}{dt}\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right]=\left[\begin{matrix}
+3&amp;-18\\2&amp;-9
+\end{matrix}\right]\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right],\]</span></p>
+<p>Asi vemos que el polinomio caracteristico esta determinado por <span class="math inline">\((\lambda+3)^2=0\)</span> y así tiene un único autovalor <span class="math inline">\(\lambda=-3\)</span> con un autovector <span class="math inline">\(v= \left[\begin{matrix} 3\\  1 \end{matrix}\right]\)</span> Este sistema tiene dos soluciones una es de la forma <span class="math inline">\(X_1=v_1e^{\lambda t}\)</span> y la segunda es de la forma <span class="math inline">\(X_2=v_1te^{\lambda t}+Pe^{\lambda t}\)</span> donde <span class="math inline">\(P\)</span> es un vector. Para encontrar <span class="math inline">\(P\)</span> sustituimos en la ecuación <span class="math inline">\(X'=AX\)</span> y obtenemos</p>
+<p><span class="math display">\[(Av_1-\lambda v_1)te^{\lambda t}+(AP-\lambda P-v_1)e^{\lambda t}=0\]</span> puesto que <span class="math inline">\(e^{\lambda t}\)</span> es diferente de cero y el primer termino de la anterior es <span class="math inline">\((A-\lambda I)v_1=0\)</span>, entonce se reduce a <span class="math display">\[(A-\lambda I)P=v_1\]</span></p>
+<p>de esta forma una solución del sistema es <span class="math display">\[X_1=\left[\begin{matrix}
+3\\
+1
+\end{matrix}\right]e^{-3t}\]</span> y la otra solución es <span class="math display">\[\left[\begin{matrix}
+3\\
+1
+\end{matrix}\right]te^{-3t}+
+\left[\begin{matrix}
+p_1\\
+p_2
+\end{matrix}\right]e^{-3t}
+\]</span> para encontrar <span class="math inline">\(\left[\begin{matrix} p_1\\  p_2 \end{matrix}\right]\)</span> debemos resolver el sistema</p>
+<p><span class="math display">\[\left[\begin{matrix}
+6&amp;-18\\2&amp;-6
+\end{matrix}\right]\left[\begin{matrix}
+p_1\\p_2
+\end{matrix}\right]=\left[\begin{matrix}
+3\\1
+\end{matrix}\right]\]</span></p>
+<p>Así obtenemos que <span class="math inline">\(p_1=\frac{1}{2}\)</span> y <span class="math inline">\(p_2=0\)</span> de esta forma</p>
+<p><span class="math display">\[X_2=\left[\begin{matrix}
+3\\
+1
+\end{matrix}\right]te^{-3t}+
+\left[\begin{matrix}
+\frac{1}{2}\\
+0
+\end{matrix}\right]e^{-3t}
+\]</span></p>
+<p>de esta forma la soculción general es</p>
+<p><span class="math display">\[\left[\begin{matrix}
+x(t)\\y(t)
+\end{matrix}\right]=C_1\left\{\left[\begin{matrix}
+3\\
+1
+\end{matrix}\right]e^{-3t}\right\}
++C_2\left\{ \left[\begin{matrix}
+3\\
+1
+\end{matrix}\right]te^{-3t}+
+\left[\begin{matrix}
+\frac{1}{2}\\
+0
+\end{matrix}\right]e^{-3t} \right\}
+\]</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

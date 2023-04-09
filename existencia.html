@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ode – taller_1</title>
+<title>ode - Teorema de existencia e unicidad</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,24 +101,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Problemas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./taller_1.html" aria-current="page">
+    <a class="nav-link" href="./taller_1.html">
  <span class="menu-text">Taller de Repaso</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./sol_lineal.html">
- <span class="menu-text">Sistemas Linales con coeficientes constantes y homogeneos</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Taller_2_orden_a.html">
- <span class="menu-text">Taller de ecuaciones diferenciales de segundo orden</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./sistemas.html">
- <span class="menu-text">Sistema de ecuaciones diferenciales</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./nonlinear.html">
- <span class="menu-text">Sistemas no lineales</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -131,71 +115,31 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#taller-de-repaso" id="toc-taller-de-repaso" class="nav-link active" data-scroll-target="#taller-de-repaso">Taller de Repaso</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Teorema de existencia e unicidad</h1>
+</div>
 
 
-<section id="taller-de-repaso" class="level1">
-<h1>Taller de Repaso</h1>
-<p>Resuelva las siguientes ecuaciones diferenciales, si es posible.</p>
-<ol type="1">
-<li><p><span class="math inline">\(\frac{dy}{dx}=\sin5x\)</span></p></li>
-<li><p><span class="math inline">\(y\ln x\frac{dy}{dx}=\Big(\frac{y+1}{x}\Big)^2\)</span></p></li>
-<li><p><span class="math inline">\(x(1+y^2)^{1/2}+2y\cos^33x\frac{dy}{dx}\)</span></p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}=\frac{2x+1}{2y}\)</span>, con las condiciones <span class="math inline">\(y(-2)=-1\)</span></p></li>
-<li><p><span class="math inline">\(\frac{dy}{dt}=y^2\sin t^2\)</span> con la condición inicial <span class="math inline">\(y(-2)=\frac{1}{3}\)</span></p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}=\frac{xy+2y-x-2}{xy-3y+x-3}\)</span> con la condición inicial <span class="math inline">\(y(0)=1\)</span></p></li>
-</ol>
-<p>Resuelva las siguientes ecuaciones.</p>
-<ol start="7" type="1">
-<li><p><span class="math inline">\(x\frac{dy}{dx}-4y=x^6e^x\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}-3y=6\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}-2xy=2\)</span>.</p></li>
-<li><p><span class="math inline">\(x\frac{dy}{dx}+2y=3\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}+y=e^{3x}\)</span>.</p></li>
-<li><p><span class="math inline">\(x^2y'+x(x+2)y=e^x\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}+2xy=f(x)\)</span> con <span class="math inline">\(f(x)=\begin{cases}x \text{ si } 0\leq x\leq 1\\ 0\text{ si }x&gt; 1\end{cases}\)</span>, con <span class="math inline">\(y(0)=2\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}+2xy=f(x)\)</span> con <span class="math inline">\(f(x)=\begin{cases}1 \text{ si } 0\leq x\leq 3\\ -1\text{ si }x&gt; 3\end{cases}\)</span> con <span class="math inline">\(y(0)=1\)</span>.</p></li>
-<li><p><span class="math inline">\((1+x^2)\frac{dy}{dx}+2xy=f(x)\)</span> con <span class="math inline">\(f(x)=\begin{cases}x \text{ si } 0\leq x\leq 1\\ -x\text{ si }x&gt; 1\end{cases}\)</span> con <span class="math inline">\(y(0)=0\)</span>.</p></li>
-</ol>
-<p>Realice el bosquejo del campo de pendientes de las siguientes ecuaciones</p>
-<ol start="16" type="1">
-<li><p><span class="math inline">\(\frac{dy}{dt}=4y^2\)</span></p></li>
-<li><p><span class="math inline">\(\frac{dy}{dt}=2y(1-y)\)</span></p></li>
-<li><p>Considere la ecuación diferencial autónoma <span class="math display">\[\frac{dS}{dt}=S^3-2S^2+S\]</span></p></li>
-</ol>
-<ol type="a">
-<li><p>A mano, haga un croquis burdo del campo de pendientes</p></li>
-<li><p>Usando este croquis, delinee las gráficas de las soluciones <span class="math inline">\(S(t)\)</span> con las condiciones iniciales <span class="math inline">\(S(0)=0\)</span>, <span class="math inline">\(S(1)=1/2\)</span>,<span class="math inline">\(S(0)=1/2\)</span>, <span class="math inline">\(S(0)=3/2\)</span>y <span class="math inline">\(S(0)=-1/2\)</span></p></li>
-</ol>
-<ol start="19" type="1">
-<li>Suponga que sabemos que una función <span class="math inline">\(f(t,y)\)</span> e continua en <span class="math inline">\(f(t,3)=-1\)</span> para todo t.</li>
-</ol>
-<pre><code>a. ¿Qué nos dice esta información sobre el campo de pendientes para la ecuación diferencial $dy/dt=f(t,y)$?
 
-b. ¿Qué puede usted concluir sobre las soluciones $y(t)$ de  $dy/dt=f(t,y)$? Por ejemplo, si $y(0)&lt;3$, ¿puede $y(t)\to\infty$</code></pre>
-<p>Resuelva los siguientes problemas</p>
-<ol start="20" type="1">
-<li><p>Un deposito contiene 100 galones de agua contaminada en los que están disueltos 15 libras de contaminante. el agua contaminada empieza a fluir al deposito a una tasa de 10 gal por minuto. La concentración del contaminante en esta corriente de entrada en el instante <span class="math inline">\(t\)</span> es <span class="math inline">\(c(t)\)</span> libras por galón. La solución del deposito se mezcla de manera uniforme y el agua contaminada fluye a la tasa de 10 gal por minuto. Obtenga un problema de valor inicial para la cantidad de contaminante <span class="math inline">\(y(t)\)</span> en el deposito.</p></li>
-<li><p>Se bombea agua residual contaminada a razón de 1 gal/min en un deposito que contiene 100 gal de agua y sale del deposito una mezcla uniforme a la misma tasa</p></li>
-</ol>
-<ol type="a">
-<li><p>Calcule la cantidad <span class="math inline">\(y(t)\)</span> de desechos en el deposito en el instante t. ¿Qué sucede cuando <span class="math inline">\(t\to \infty\)</span></p></li>
-<li><p>¿Cuanto tardará la concentración de desechos en alcanzar 20%de su nivel máximo?</p></li>
-<li><p>Después de una hora se detiene la entrada de agua residual y se bombea una agua limpia a razón de 1 gal/min. Utilice una función a trozos y construya un Problema de valor inicial que modelice la situación. Bosqueje el campo de pendientes para trazar la gráfica en el intervalo de tiempo <span class="math inline">\(0\leq t \leq 1500\)</span>. ¿Qué ocurre cuando <span class="math inline">\(t\to \infty\)</span></p></li>
-</ol>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Sea la función <span class="math inline">\(f\)</span> y <span class="math inline">\(\frac{\partial f}{\partial y}\)</span> definida en un intervalo <span class="math inline">\(\alpha &lt; t &lt; \beta\)</span> y en un intervalo <span class="math inline">\(\gamma &lt; y &lt; \delta\)</span> que contenga el punto <span class="math inline">\((t_0, y_0)\)</span>, donde <span class="math inline">\(t_0\)</span> y <span class="math inline">\(y_0\)</span> son constantes. Entonces, en un intervalo <span class="math inline">\(t_0 - h &lt; t &lt; t_0 + h\)</span> que está contenido en <span class="math inline">\(\alpha &lt; t &lt; \beta\)</span>, existe una solución única <span class="math inline">\(y = \phi(t)\)</span> del problema de valor inicial <span class="math display">\[y' = f(t, y), \quad y(t_0) = y_0\]</span> (figure)figure.png)</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

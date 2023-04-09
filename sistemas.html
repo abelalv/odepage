@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ode – taller_1</title>
+<title>ode - Sistema de ecuaciones diferenciales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Problemas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./taller_1.html" aria-current="page">
+    <a class="nav-link" href="./taller_1.html">
  <span class="menu-text">Taller de Repaso</span></a>
   </li>  
   <li class="nav-item">
@@ -113,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Taller de ecuaciones diferenciales de segundo orden</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./sistemas.html">
+    <a class="nav-link active" href="./sistemas.html" aria-current="page">
  <span class="menu-text">Sistema de ecuaciones diferenciales</span></a>
   </li>  
   <li class="nav-item">
@@ -135,64 +135,119 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#taller-de-repaso" id="toc-taller-de-repaso" class="nav-link active" data-scroll-target="#taller-de-repaso">Taller de Repaso</a></li>
+  <li><a href="#sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables" id="toc-sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables" class="nav-link active" data-scroll-target="#sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables">Sistemas de ecuaciones diferenciales lineales con coeficientes constantes estables</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sistema de ecuaciones diferenciales</h1>
+</div>
 
 
-<section id="taller-de-repaso" class="level1">
-<h1>Taller de Repaso</h1>
-<p>Resuelva las siguientes ecuaciones diferenciales, si es posible.</p>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Aquí analizaremos un sistema de ecuaciones diferenciales, el cual se puede escribir como:<br>
+<span class="math display">\[\begin{cases} \dot{x}=ax+by \\ \dot{y}=cx+dy\end{cases}\]</span> donde <span class="math inline">\(a,b,c,d\)</span> son constantes. Este sistema se puede escribir de forma resumida como: <span class="math display">\[\frac{\partial x}{\partial t}=F(x)\]</span></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se dice que un sistema de ecuaciones diferenciales es autonómo si las ecuaciones no dependen explícitamente del tiempo. Es decir <span class="math inline">\(F(x)\)</span> sólo depende de <span class="math inline">\(x\)</span>.</p>
+</div>
+</div>
+<p>El estudio de un sistema de ecuaciones diferenciales se puede hacer de varias formas, una de ellas es mediante el análisis de las trayectorias que siguen las soluciones del sistema. Para esto, se puede analizar el campo vectorial que se genera a partir de las ecuaciones diferenciales, con el fin de estudiar <span class="math inline">\(x(t)\)</span> y <span class="math inline">\(y(t)\)</span> cuando el tiempo es muy grande.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Punto de equilibrio: Es un punto del espacio de fase en el cual el campo vectorial es nulo. Es decir <span class="math inline">\(F(x,y)=0\)</span>.</p>
+</div>
+</div>
+<p># Ejemplo</p>
+<p>Sea el sistema de ecuaciones diferenciales: <span class="math display">\[\begin{cases} \dot{x}=x+y \\ \dot{y}=x-y\end{cases}\]</span> Este sistema se puede escribir de forma resumida como: <span class="math display">\[\frac{\partial x}{\partial t}=Ax\]</span> donde <span class="math inline">\(A=\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}\)</span>. y <span class="math inline">\(x\)</span> es un vector de dos componentes: <span class="math inline">\(x=\begin{bmatrix} x_1 \\ x_2 \end{bmatrix}\)</span>. El polinomio característico de la matriz <span class="math inline">\(A\)</span> es: <span class="math display">\[\lambda^2-Traz(A)\lambda+det(A)=0,\]</span> <span class="math display">\[\lambda^2-2=0,\]</span> De aquí que los autovalores de la matriz <span class="math inline">\(A\)</span> son: <span class="math display">\[\lambda_1=\sqrt{2}\]</span> y <span class="math display">\[\lambda_2=-\sqrt{2}\]</span> Note que este sistema es diagonalizable. Además el sistema es autónomo, ya que no depende explícitamente del tiempo, y tiene un puntos de equilibrio: <span class="math inline">\((0,0)\)</span>.</p>
+<p>Para hacer el diagrama de fase debemos para el caso diagonalizable:</p>
 <ol type="1">
-<li><p><span class="math inline">\(\frac{dy}{dx}=\sin5x\)</span></p></li>
-<li><p><span class="math inline">\(y\ln x\frac{dy}{dx}=\Big(\frac{y+1}{x}\Big)^2\)</span></p></li>
-<li><p><span class="math inline">\(x(1+y^2)^{1/2}+2y\cos^33x\frac{dy}{dx}\)</span></p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}=\frac{2x+1}{2y}\)</span>, con las condiciones <span class="math inline">\(y(-2)=-1\)</span></p></li>
-<li><p><span class="math inline">\(\frac{dy}{dt}=y^2\sin t^2\)</span> con la condición inicial <span class="math inline">\(y(-2)=\frac{1}{3}\)</span></p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}=\frac{xy+2y-x-2}{xy-3y+x-3}\)</span> con la condición inicial <span class="math inline">\(y(0)=1\)</span></p></li>
+<li><p>Calcular el campo vectorial del sistema de ecuaciones diferenciales, para ello usamos la función de flujo: <span class="math display">\[F(x,y)=\begin{bmatrix} x+y \\ x-y \end{bmatrix}\]</span></p></li>
+<li><p>Calcular las trayectorias de las soluciones del sistema de ecuaciones diferenciales,las cuales son tangentes a los vectores del campo vectorial.</p></li>
+<li><p>Calcular los puntos de equilibrio del sistema de ecuaciones diferenciales.</p></li>
 </ol>
-<p>Resuelva las siguientes ecuaciones.</p>
-<ol start="7" type="1">
-<li><p><span class="math inline">\(x\frac{dy}{dx}-4y=x^6e^x\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}-3y=6\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}-2xy=2\)</span>.</p></li>
-<li><p><span class="math inline">\(x\frac{dy}{dx}+2y=3\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}+y=e^{3x}\)</span>.</p></li>
-<li><p><span class="math inline">\(x^2y'+x(x+2)y=e^x\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}+2xy=f(x)\)</span> con <span class="math inline">\(f(x)=\begin{cases}x \text{ si } 0\leq x\leq 1\\ 0\text{ si }x&gt; 1\end{cases}\)</span>, con <span class="math inline">\(y(0)=2\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{dy}{dx}+2xy=f(x)\)</span> con <span class="math inline">\(f(x)=\begin{cases}1 \text{ si } 0\leq x\leq 3\\ -1\text{ si }x&gt; 3\end{cases}\)</span> con <span class="math inline">\(y(0)=1\)</span>.</p></li>
-<li><p><span class="math inline">\((1+x^2)\frac{dy}{dx}+2xy=f(x)\)</span> con <span class="math inline">\(f(x)=\begin{cases}x \text{ si } 0\leq x\leq 1\\ -x\text{ si }x&gt; 1\end{cases}\)</span> con <span class="math inline">\(y(0)=0\)</span>.</p></li>
-</ol>
-<p>Realice el bosquejo del campo de pendientes de las siguientes ecuaciones</p>
-<ol start="16" type="1">
-<li><p><span class="math inline">\(\frac{dy}{dt}=4y^2\)</span></p></li>
-<li><p><span class="math inline">\(\frac{dy}{dt}=2y(1-y)\)</span></p></li>
-<li><p>Considere la ecuación diferencial autónoma <span class="math display">\[\frac{dS}{dt}=S^3-2S^2+S\]</span></p></li>
-</ol>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>"\n\n\n\n    for i in range(N):\n        x, y, z = x_t[i,:,:].T\n        lines = ax.plot(x, y, z, '-', c=colors[i])\n        plt.setp(lines, linewidth=2)\n"</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="fig-plano-fase" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="sistemas_files/figure-html/fig-plano-fase-output-1.png" width="744" height="527" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Plano de fase para el sistema de ecuaciones diferenciales lineales con coeficientes constantes</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La clasificación de un sistema de ecuación diferencial lineal con coeficientes constantes depende de sus autovectores y esto puede determinar su flujo</p>
+<p>El análisis de los autovectores de un sistema de ecuaciones diferenciales lineales con coeficientes constantes nos permite clasificar el sistema en uno de los siguientes tipos:</p>
 <ol type="a">
-<li><p>A mano, haga un croquis burdo del campo de pendientes</p></li>
-<li><p>Usando este croquis, delinee las gráficas de las soluciones <span class="math inline">\(S(t)\)</span> con las condiciones iniciales <span class="math inline">\(S(0)=0\)</span>, <span class="math inline">\(S(1)=1/2\)</span>,<span class="math inline">\(S(0)=1/2\)</span>, <span class="math inline">\(S(0)=3/2\)</span>y <span class="math inline">\(S(0)=-1/2\)</span></p></li>
+<li>Diagolaizable con autovalores reales</li>
+<li>Diagonalizable con autovalores complejos</li>
+<li>No diagonalizable</li>
 </ol>
-<ol start="19" type="1">
-<li>Suponga que sabemos que una función <span class="math inline">\(f(t,y)\)</span> e continua en <span class="math inline">\(f(t,3)=-1\)</span> para todo t.</li>
-</ol>
-<pre><code>a. ¿Qué nos dice esta información sobre el campo de pendientes para la ecuación diferencial $dy/dt=f(t,y)$?
-
-b. ¿Qué puede usted concluir sobre las soluciones $y(t)$ de  $dy/dt=f(t,y)$? Por ejemplo, si $y(0)&lt;3$, ¿puede $y(t)\to\infty$</code></pre>
-<p>Resuelva los siguientes problemas</p>
-<ol start="20" type="1">
-<li><p>Un deposito contiene 100 galones de agua contaminada en los que están disueltos 15 libras de contaminante. el agua contaminada empieza a fluir al deposito a una tasa de 10 gal por minuto. La concentración del contaminante en esta corriente de entrada en el instante <span class="math inline">\(t\)</span> es <span class="math inline">\(c(t)\)</span> libras por galón. La solución del deposito se mezcla de manera uniforme y el agua contaminada fluye a la tasa de 10 gal por minuto. Obtenga un problema de valor inicial para la cantidad de contaminante <span class="math inline">\(y(t)\)</span> en el deposito.</p></li>
-<li><p>Se bombea agua residual contaminada a razón de 1 gal/min en un deposito que contiene 100 gal de agua y sale del deposito una mezcla uniforme a la misma tasa</p></li>
-</ol>
-<ol type="a">
-<li><p>Calcule la cantidad <span class="math inline">\(y(t)\)</span> de desechos en el deposito en el instante t. ¿Qué sucede cuando <span class="math inline">\(t\to \infty\)</span></p></li>
-<li><p>¿Cuanto tardará la concentración de desechos en alcanzar 20%de su nivel máximo?</p></li>
-<li><p>Después de una hora se detiene la entrada de agua residual y se bombea una agua limpia a razón de 1 gal/min. Utilice una función a trozos y construya un Problema de valor inicial que modelice la situación. Bosqueje el campo de pendientes para trazar la gráfica en el intervalo de tiempo <span class="math inline">\(0\leq t \leq 1500\)</span>. ¿Qué ocurre cuando <span class="math inline">\(t\to \infty\)</span></p></li>
-</ol>
+<p>para ver el diagrma de fase de algunos sistemas lineales con coeficientes constantes homogeneo, puede consultar el siguiente <a href="https://colab.research.google.com/drive/1ZoZ45rmqtBzPBpuVETeoTHUqyw52Wd28#scrollTo=dN3dtENeZNIu">enlace</a></p>
+<section id="sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables" class="level2">
+<h2 class="anchored" data-anchor-id="sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables">Sistemas de ecuaciones diferenciales lineales con coeficientes constantes estables</h2>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se dice que un sistema de ecuaciones diferenciales lineales con coeficientes constantes es <strong>estable</strong> si todos sus autovectores tienen parte real negativa.</p>
+</div>
+</div>
+<p>Vamos estudiar el sistema de ecuaciones diferenciales lineales con coeficientes constantes de la forma:</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="fig-plano-fase2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="sistemas_files/figure-html/fig-plano-fase2-output-1.png" width="744" height="527" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Plano de fase para el sistema de ecuaciones diferenciales lineales con coeficientes constantes</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[\frac{d x}{dt}=Ax+B,\]</span> donde <span class="math inline">\(A\)</span> es una matriz cuadrada de orden <span class="math inline">\(2\)</span> y <span class="math inline">\(B\)</span> es un vector columna de orden <span class="math inline">\(2\)</span>.</p>
+<p>Para estudiar la estabilidad de este sistema, se debe estudiar los autovalores de la matriz <span class="math inline">\(A\)</span> y los autovectores de la matriz <span class="math inline">\(A\)</span>. Note que el diagrma de fase es similar al de un sistema de ecuaciones diferenciales lineales con coeficientes constantes homogeneo, es translado al punto crítico.</p>
+<p>para ver el diagrma de fase de algunos sistemas lineales con coeficientes constantes no homogeneo, puede consultar el siguiente <a href="https://colab.research.google.com/drive/1QPdZMO2hV2D5SmI96QYgQ3aLfphPm2R7?usp=sharing">enlace</a></p>
 
 
 </section>
