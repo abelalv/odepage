@@ -135,7 +135,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables" id="toc-sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables" class="nav-link active" data-scroll-target="#sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables">Sistemas de ecuaciones diferenciales lineales con coeficientes constantes estables</a></li>
+  <li><a href="#galeria-de-retratos-de-fase" id="toc-galeria-de-retratos-de-fase" class="nav-link active" data-scroll-target="#galeria-de-retratos-de-fase">Galeria de retratos de fase</a></li>
+  <li><a href="#sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables" id="toc-sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables" class="nav-link" data-scroll-target="#sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables">Sistemas de ecuaciones diferenciales lineales con coeficientes constantes estables</a></li>
   </ul>
 </nav>
     </div>
@@ -197,7 +198,7 @@ Note
 <li><p>Calcular los puntos de equilibrio del sistema de ecuaciones diferenciales.</p></li>
 </ol>
 <div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>"\n\n\n\n    for i in range(N):\n        x, y, z = x_t[i,:,:].T\n        lines = ax.plot(x, y, z, '-', c=colors[i])\n        plt.setp(lines, linewidth=2)\n"</code></pre>
 </div>
 </div>
@@ -219,6 +220,26 @@ Note
 <li>No diagonalizable</li>
 </ol>
 <p>para ver el diagrma de fase de algunos sistemas lineales con coeficientes constantes homogeneo, puede consultar el siguiente <a href="https://colab.research.google.com/drive/1ZoZ45rmqtBzPBpuVETeoTHUqyw52Wd28#scrollTo=dN3dtENeZNIu">enlace</a></p>
+<section id="galeria-de-retratos-de-fase" class="level2">
+<h2 class="anchored" data-anchor-id="galeria-de-retratos-de-fase">Galeria de retratos de fase</h2>
+<p>Los retratos de fase se clssifican segun la forma de los autovectores de la asociada al sistema de ecuaciones diferenciales lineales con coeficientes constantes de la siguiente forma:</p>
+<p>Sea el sistema de ecuaciones diferenciales lineales con coeficientes constantes:</p>
+<p><span class="math display">\[ \begin{cases} \dot{x} = ax + by \\ \dot{y} = cx + dy \end{cases} \]</span> donde <span class="math display">\[A=\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}\]</span> y <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> son los autovectores asociados a los autovalores <span class="math inline">\(\lambda_1\)</span> y <span class="math inline">\(\lambda_2\)</span> respectivamente.</p>
+<ol type="1">
+<li><p><strong>Nodo impropio</strong> Si <span class="math inline">\(\lambda_1\)</span> y <span class="math inline">\(\lambda_2\)</span> son reales y distintosy tiene el mismo signo. <strong><span class="math inline">\(\{ue^{\lambda_1 t},ve^{\lambda_2 t}\}\)</span></strong></p></li>
+<li><p><strong>Nodo deficiente</strong> Si <span class="math inline">\(\lambda_1=\lambda_2\)</span> y el espacio caracteristico es unidimesional <strong><span class="math inline">\(\{ue^{\lambda_1 t},(w+ut)e^{\lambda_1 t}\}\)</span></strong></p></li>
+<li><p><strong>Nodo extrella</strong> <span class="math inline">\(\lambda_1=\lambda_2\)</span> y el espacio caracteristico es bidimensional <strong><span class="math inline">\(\{ue^{\lambda_1 t},ve^{\lambda_1 t}\}\)</span></strong></p></li>
+<li><p><strong>Nodo silla</strong> Si <span class="math inline">\(\lambda_1\)</span> y <span class="math inline">\(\lambda_2\)</span> son reales y distintosy tienen signos opuestos. <strong><span class="math inline">\(\{ue^{\lambda_1 t},ve^{\lambda_2 t}\}\)</span></strong></p></li>
+<li><p><strong>Centro</strong> Si <span class="math inline">\(\lambda_1=i\beta\)</span> y <span class="math inline">\(\lambda_2=-i\beta\)</span> son complejos conjugados. <strong><span class="math inline">\(\{Re\{ue^{i\beta t}\}\},\{Im \{ue^{i\beta t}\}\}\)</span></strong></p></li>
+<li><p><strong>Punto espiral</strong> Si <span class="math inline">\(\lambda_1=\alpha+i\beta\)</span> y <span class="math inline">\(\lambda_2=\overline{\lambda_1}\)</span> son complejos conjugados. <strong><span class="math inline">\(\{Re\{ue^{\alpha+i\beta t}\}\},\{Im \{ue^{\alpha+i\beta t}\}\}\)</span></strong></p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/campos.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">figure</figcaption><p></p>
+</figure>
+</div>
+</section>
 <section id="sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables" class="level2">
 <h2 class="anchored" data-anchor-id="sistemas-de-ecuaciones-diferenciales-lineales-con-coeficientes-constantes-estables">Sistemas de ecuaciones diferenciales lineales con coeficientes constantes estables</h2>
 <div class="callout-note callout callout-style-default callout-captioned">
